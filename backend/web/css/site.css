@@ -1,0 +1,25 @@
+hr {
+    border-top: 2px solid rgb(79 144 234);
+    width: 100%;
+}
+
+.header__navbar {
+    background-color: #4d86d3;
+    background-image: linear-gradient(109.6deg, rgba(79,148,243,0.73) 11.2%, rgba(140,105,193,0.87) 91.2%);
+}
+
+.header__navbar-link {
+    color: #f5faff;
+}
+
+.header__navbar-link.active {
+    color: #c8e4ff;
+}
+
+.header__navbar-link:hover {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.header__navbar-logo-img {
+
+}

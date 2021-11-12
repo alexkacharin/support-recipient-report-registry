@@ -1,0 +1,4 @@
+.records-viewer__toolbar-sorter-dropdown {
+    max-height: 400px;
+    overflow-y: scroll;
+}

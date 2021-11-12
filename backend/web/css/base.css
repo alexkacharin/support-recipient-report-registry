@@ -1,0 +1,22 @@
+html,
+body {
+    height: 100%;
+}
+
+.footer {
+    background-color: #464646;
+    padding: 5px 0;
+    color: #949494;
+}
+
+.not-set {
+    color: #c55;
+    font-style: italic;
+}
+
+.top-toolbar {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}

@@ -1,0 +1,23 @@
+.registry-records_grid__table_resizable-loading {
+    opacity: 0;
+}
+
+.registry-records_grid__table_resizable {
+    min-width: 100%;
+    transition: ease opacity 0.5s
+}
+
+.registry-records_grid__table_resizable-grip {
+    top: 0px;
+    right: -2px;
+    bottom: 0px;
+    width: 9px;
+    position: absolute;
+    cursor: col-resize;
+    z-index: 999;
+    background-color: transparent;
+}
+
+.registry-records_grid__cell:hover .registry-records_grid__table_resizable-grip {
+    background-color: rgba(0, 0, 0, 0.45);
+}

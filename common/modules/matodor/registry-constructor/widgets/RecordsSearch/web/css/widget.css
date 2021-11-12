@@ -1,0 +1,23 @@
+.records-search {}
+
+.records-search__fields {
+    margin: -5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.records-search__field {
+    margin: 5px;
+    flex-basis: 200px;
+    flex-grow: 1;
+}
+
+.records-search__field .form-group .control-label {
+    font-size: 12px;
+    line-height: 12px;
+    color: #212121;
+    background: #f9f9f9;
+    border-radius: 5px;
+    padding: 3px;
+    margin-bottom: 3px;
+}
