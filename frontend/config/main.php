@@ -83,6 +83,9 @@ return [
                 require __DIR__ . '/rules.php'
             )
         ],
+		'assetManager' => [
+            'linkAssets' => false
+        ],
     ],
     'params' => $params,
 ];
