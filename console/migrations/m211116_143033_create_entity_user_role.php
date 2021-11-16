@@ -1,0 +1,48 @@
+<?php
+
+use yii\db\Migration;
+
+/**
+ * Class m211116_143033_create_entity_user_role
+ */
+class m211116_143033_create_entity_user_role extends Migration
+{
+    /**
+     * {@inheritdoc}
+     */
+    public function safeUp()
+    {
+        $this->insert('{{%auth_item}}', [
+            'name' => 'entity',
+            'type' => 1,
+            'description' => 'Проситель',
+            'created_at' => time(),
+            'updated_at' => time(),
+        ]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function safeDown()
+    {
+        echo "m211116_143033_create_entity_user_role cannot be reverted.\n";
+
+        return false;
+    }
+
+    /*
+    // Use up()/down() to run migration code without a transaction.
+    public function up()
+    {
+
+    }
+
+    public function down()
+    {
+        echo "m211116_143033_create_entity_user_role cannot be reverted.\n";
+
+        return false;
+    }
+    */
+}
