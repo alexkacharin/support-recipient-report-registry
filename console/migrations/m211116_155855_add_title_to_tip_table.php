@@ -3,9 +3,9 @@
 use yii\db\Migration;
 
 /**
- * Class m211116_141255_add_title_to_tip_table
+ * Class m211116_155855_add_title_to_tip_table
  */
-class m211116_141255_add_title_to_tip_table extends Migration
+class m211116_155855_add_title_to_tip_table extends Migration
 {
     /**
      * {@inheritdoc}
@@ -23,9 +23,8 @@ class m211116_141255_add_title_to_tip_table extends Migration
      */
     public function safeDown()
     {
-        echo "m211116_141255_add_title_to_tip_table cannot be reverted.\n";
-
-        return false;
+        Yii::$app->db->createCommand()-> delete('information_tip', ['in','title',
+            ['годовой','полугодовой']])->execute();
     }
 
     /*
@@ -37,7 +36,7 @@ class m211116_141255_add_title_to_tip_table extends Migration
 
     public function down()
     {
-        echo "m211116_141255_add_title_to_tip_table cannot be reverted.\n";
+        echo "m211116_155855_add_title_to_tip_table cannot be reverted.\n";
 
         return false;
     }

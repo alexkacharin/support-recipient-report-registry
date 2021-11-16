@@ -26,9 +26,8 @@ class m211116_143033_create_entity_user_role extends Migration
      */
     public function safeDown()
     {
-        echo "m211116_143033_create_entity_user_role cannot be reverted.\n";
-
-        return false;
+        Yii::$app->db->createCommand()-> delete('auth_item', ['in','name',
+            ['entity']])->execute();
     }
 
     /*

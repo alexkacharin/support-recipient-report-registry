@@ -3,9 +3,9 @@
 use yii\db\Migration;
 
 /**
- * Class m211116_141302_add_title_to_status_table
+ * Class m211116_155912_add_title_to_status_table
  */
-class m211116_141302_add_title_to_status_table extends Migration
+class m211116_155912_add_title_to_status_table extends Migration
 {
     /**
      * {@inheritdoc}
@@ -25,9 +25,8 @@ class m211116_141302_add_title_to_status_table extends Migration
      */
     public function safeDown()
     {
-        echo "m211116_141302_add_title_to_status_table cannot be reverted.\n";
-
-        return false;
+        Yii::$app->db->createCommand()-> delete('information_status', ['in','title',
+            ['черновик','утвержден','на рассмотрении','удален']])->execute();
     }
 
     /*
@@ -39,7 +38,7 @@ class m211116_141302_add_title_to_status_table extends Migration
 
     public function down()
     {
-        echo "m211116_141302_add_title_to_status_table cannot be reverted.\n";
+        echo "m211116_155912_add_title_to_status_table cannot be reverted.\n";
 
         return false;
     }
