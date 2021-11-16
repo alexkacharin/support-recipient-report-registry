@@ -16,7 +16,6 @@ class m211116_140756_create_information_tip_table extends Migration
             'id' => $this->primaryKey(),
             'title' => $this ->string(255),
         ]);
-
     }
 
     /**
@@ -25,6 +24,5 @@ class m211116_140756_create_information_tip_table extends Migration
     public function safeDown()
     {
         $this->dropTable('{{%information_tip}}');
-
     }
 }

@@ -26,19 +26,4 @@ class m211116_155855_add_title_to_tip_table extends Migration
         Yii::$app->db->createCommand()-> delete('information_tip', ['in','title',
             ['годовой','полугодовой']])->execute();
     }
-
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m211116_155855_add_title_to_tip_table cannot be reverted.\n";
-
-        return false;
-    }
-    */
 }

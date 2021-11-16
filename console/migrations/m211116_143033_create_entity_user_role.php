@@ -29,19 +29,4 @@ class m211116_143033_create_entity_user_role extends Migration
         Yii::$app->db->createCommand()-> delete('auth_item', ['in','name',
             ['entity']])->execute();
     }
-
-    /*
-    // Use up()/down() to run migration code without a transaction.
-    public function up()
-    {
-
-    }
-
-    public function down()
-    {
-        echo "m211116_143033_create_entity_user_role cannot be reverted.\n";
-
-        return false;
-    }
-    */
 }

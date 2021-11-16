@@ -74,7 +74,5 @@ class m211116_150537_create_information_table extends Migration
             'information'
         );
         $this->dropTable('{{%information}}');
-
-
     }
 }
