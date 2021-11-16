@@ -12,7 +12,7 @@ class m210620_101752_create_admin extends Migration
      */
     public function safeUp()
     {
-        $this->insert('{{%auth_item}}', [
+        $this->insert('auth_item', [
             'name' => 'superadmin',
             'type' => 1,
             'description' => 'Технический администратор',
@@ -29,7 +29,7 @@ class m210620_101752_create_admin extends Migration
             throw new \RuntimeException('Can\'t create admin user');
         }
 
-        $this->insert('{{%auth_assignment}}', [
+        $this->insert('auth_assignment', [
             'item_name' => 'superadmin',
             'user_id' => $admin->id,
             'created_at' => time(),
