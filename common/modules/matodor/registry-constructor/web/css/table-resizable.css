@@ -1,0 +1,9 @@
+.table.table-resizable {
+    min-width: 100%;
+    width: max-content;
+}
+
+.table.table-resizable th,
+.table.table-resizable td {
+    word-break: break-word;
+}

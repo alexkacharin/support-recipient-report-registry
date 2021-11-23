@@ -1,0 +1,41 @@
+.registry-record-card__field {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+}
+
+.registry-record-card__field:nth-child(odd) {
+    background-color: #f1f4f5;
+}
+
+.registry-record-card__field:hover {
+    background-color: #fafafa;
+}
+
+.registry-record-card__field-header,
+.registry-record-card__field-value {
+    padding-left: 5px;
+}
+
+.registry-record-card__field-header {
+    color: #555;
+}
+
+.registry-record-card__field:nth-child(even) .registry-record-card__field-header {
+    color: #555;
+}
+
+.registry-record-card__field-value {
+    border-left: 1px solid #dbe1e3;
+    word-break: break-all;
+    white-space: normal;
+}
+
+.registry-record-card__field:nth-child(even) .registry-record-card__field-value {
+    border-left: 1px solid #bbbdff;
+}
+
+.registry-record-card__field-value > .not-set {
+    color: #c0c0c0;
+    font-style: normal;
+}

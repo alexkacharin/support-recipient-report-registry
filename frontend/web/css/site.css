@@ -1,0 +1,52 @@
+html,
+body {
+    height: 100%;
+}
+
+.content-container {
+    padding-bottom: 50px;
+    padding-top: 30px;
+}
+
+
+.jumbotron {
+    text-align: center;
+    background-color: #f4f9f3;
+}
+
+.jumbotron > p:last-child {
+    margin-bottom: 0;
+}
+
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+.footer {
+    background-color: #f8f8f8;
+    padding: 20px 0;
+    color: #b0b0b0;
+}
+
+.breadcrumb {
+    background-color: #e8f3ff;
+}
+
+.not-set {
+    color: #c55;
+    font-style: italic;
+}
+
+.header__navbar {
+    background-color: #04690d;
+    background-image: linear-gradient(90deg, #04690d 0%, #64de4a 100%);
+}
+
+.header__navbar-link {
+    color: #ffffff;
+}
+
+.header__navbar-link:hover {
+    color: #d0d0d0;
+}

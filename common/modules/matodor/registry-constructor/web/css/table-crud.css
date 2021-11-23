@@ -1,0 +1,22 @@
+.registry-table__form-field {
+    border: 2px solid #6c757d;
+    margin: 10px;
+    border-radius: 0.25rem;
+}
+
+.registry-table__form-permission-group.success {
+    background-color: #d3ffd3;
+}
+
+.registry-table__form-permission-group.danger {
+    background-color: #ffd3d3;
+}
+
+.registry-table__form-permission-group.info {
+    background-color: #d3f9ff;
+}
+
+.registry-table__form-field-template-variant:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
