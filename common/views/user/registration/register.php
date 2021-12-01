@@ -22,6 +22,8 @@ use yii\widgets\ActiveForm;
 
 $this->title = Yii::t('user', 'Sign up');
 $this->params['breadcrumbs'][] = $this->title;
+
+//$inn -> load(Yii::$app->getRequest()->post());
 ?>
 <div class="row">
     <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
@@ -37,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]); ?>
 
                 <?= $form->field($model, 'email') ?>
-
+                <?= $form->field($model, 'inn') ?>
                 <?php if ($module->enableGeneratingPassword == false): ?>
                     <?= $form->field($model, 'password')->passwordInput() ?>
                 <?php endif ?>

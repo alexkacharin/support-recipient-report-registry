@@ -3,6 +3,7 @@
 namespace common\models;
 
 use common\queries\UserQuery;
+use dektrium\user\models\Profile;
 use Yii;
 use yii\db\ActiveQuery;
 
@@ -12,7 +13,6 @@ use yii\db\ActiveQuery;
 class User extends \dektrium\user\models\User
 {
     private $_access = [];
-
     /**
      * @return UserQuery|ActiveQuery
      * @noinspection PhpUnhandledExceptionInspection
@@ -41,4 +41,19 @@ class User extends \dektrium\user\models\User
 
         return $access;
     }
+   /* public function rules()
+    {
+                return [
+                        ['status','default', 'value' => self::STATUS_INACTIVE],
+                        ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
+                        [['inn'],'string','max'=>13],
+                ];
+    }
+    public function attributeLabels()
+    {
+        $labels = parent::attributeLabels();
+        $labels['captcha'] = 'Проверочный код';
+        $labels['inn'] = 'ИНН';
+        return $labels;
+    }*/
 }
