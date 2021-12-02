@@ -34,6 +34,11 @@ class RegistrationForm extends Model
     public $username;
 
     /**
+     * @var integer Inn
+     */
+    public $inn;
+
+    /**
      * @var string Password
      */
     public $password;
@@ -70,6 +75,9 @@ class RegistrationForm extends Model
             // password rules
             'passwordRequired' => ['password', 'required', 'skipOnEmpty' => $this->module->enableGeneratingPassword],
             'passwordLength'   => ['password', 'string', 'min' => 6, 'max' => 72],
+            // inn rules
+            'innRequired' => ['inn', 'required'],
+            'innLength'   => ['inn', 'integer'],
         ];
     }
 
@@ -82,6 +90,7 @@ class RegistrationForm extends Model
             'email'    => Yii::t('user', 'Email'),
             'username' => Yii::t('user', 'Username'),
             'password' => Yii::t('user', 'Password'),
+            'inn'      => Yii::t('user', 'inn'),
         ];
     }
 

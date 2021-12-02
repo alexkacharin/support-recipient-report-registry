@@ -47,6 +47,7 @@ use yii\helpers\ArrayHelper;
  * @property integer $updated_at
  * @property integer $last_login_at
  * @property integer $flags
+ * @property integer $inn
  *
  * Defined relations:
  * @property-read Account[] $accounts
@@ -205,6 +206,7 @@ class User extends ActiveRecord implements IdentityInterface
             'created_at'        => Yii::t('user', 'Registration time'),
             'last_login_at'     => Yii::t('user', 'Last login'),
             'confirmed_at'      => Yii::t('user', 'Confirmation time'),
+            'inn'               => Yii::t('user', 'Inn'),
         ];
     }
 
@@ -221,9 +223,9 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $scenarios = parent::scenarios();
         return ArrayHelper::merge($scenarios, [
-            'register' => ['username', 'email', 'password'],
+            'register' => ['username', 'email', 'password', 'inn'],
             'connect'  => ['username', 'email'],
-            'create'   => ['username', 'email', 'password'],
+            'create'   => ['username', 'email', 'password', 'inn'],
             'update'   => ['username', 'email', 'password'],
             'settings' => ['username', 'email', 'password'],
         ]);
@@ -258,6 +260,10 @@ class User extends ActiveRecord implements IdentityInterface
             // password rules
             'passwordRequired' => ['password', 'required', 'on' => ['register']],
             'passwordLength'   => ['password', 'string', 'min' => 6, 'max' => 72, 'on' => ['register', 'create']],
+
+            // inn rules
+            'innRequired' => ['inn', 'required', 'on' => ['register', 'create']],
+            'innLength'   => ['inn', 'integer'],
         ];
     }
 

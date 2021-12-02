@@ -9,7 +9,7 @@ $params = array_merge(
     require __DIR__ . '/params-local.php'
 
 );
-defined('CURRENT_DOMAIN') or define('CURRENT_DOMAIN', 'localhost');
+
 return [
     'id' => 'app-frontend',
     'basePath' => dirname(__DIR__),
