@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use dektrium\user\models\User;
 use Yii;
 use yii\captcha\CaptchaAction;
 use yii\web\Controller;
@@ -66,11 +67,12 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        return $this->render('index',['model'=> new User()]);
     }
     public function actionRegisterUser()
     {
 
     }
+
 
 }

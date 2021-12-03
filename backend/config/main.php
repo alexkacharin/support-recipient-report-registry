@@ -36,6 +36,9 @@ return [
         'request' => [
             'csrfParam' => '_csrf-backend',
             'baseUrl' => '/admin',
+            'parsers' => [
+                'application/json' => 'yii\web\JsonParser',
+            ]
         ],
         'user' => [
             'enableAutoLogin' => true,

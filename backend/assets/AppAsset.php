@@ -19,6 +19,7 @@ class AppAsset extends AssetBundle
     ];
 
     public $js = [
+        'js/owl.carousel.min.js',
     ];
 
     public $depends = [
