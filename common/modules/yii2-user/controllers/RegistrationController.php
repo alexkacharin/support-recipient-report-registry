@@ -12,6 +12,7 @@
 namespace dektrium\user\controllers;
 
 use dektrium\user\Finder;
+use dektrium\user\models\Profile;
 use dektrium\user\models\RegistrationForm;
 use dektrium\user\models\ResendForm;
 use dektrium\user\models\User;
@@ -129,6 +130,8 @@ class RegistrationController extends Controller
         $model = \Yii::createObject(RegistrationForm::className());
         $event = $this->getFormEvent($model);
 
+        $profile = new Profile();
+
         $this->trigger(self::EVENT_BEFORE_REGISTER, $event);
         $this->performAjaxValidation($model);
 
@@ -144,6 +147,7 @@ class RegistrationController extends Controller
         return $this->render('register', [
             'model'  => $model,
             'module' => $this->module,
+            'profile' => $profile
         ]);
     }
 

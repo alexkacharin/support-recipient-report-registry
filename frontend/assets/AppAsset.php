@@ -18,6 +18,7 @@ class AppAsset extends AssetBundle
     ];
 
     public $js = [
+        'js/inn_script.js'
     ];
 
     public $depends = [

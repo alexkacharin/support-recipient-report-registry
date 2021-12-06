@@ -13,12 +13,12 @@ use common\models\forms\RegistrationForm;
 use yii\captcha\Captcha;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use frontend\web\js\inn;
 
 /**
  * @var yii\web\View $this
  * @var RegistrationForm $model
  * @var dektrium\user\Module $module
+ * @var dektrium\user\models\Profile $profile
  */
 
 $this->title = Yii::t('user', 'Sign up');
@@ -26,25 +26,23 @@ $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 <div class="row">
-    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+    <?php $form = ActiveForm::begin([
+        'id' => 'registration-form',
+        'enableAjaxValidation' => false,
+        'enableClientValidation' => false,
+        'options' => [
+            'style' => 'width: 100%',
+            'class' => 'd-flex'
+        ]
+    ]); ?>
+    <div class="col-md-6">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title"><?= Html::encode($this->title) ?></h3>
             </div>
-
-            <script>
-
-            </script>
             <div class="panel-body">
-                <?php $form = ActiveForm::begin([
-                    'id' => 'registration-form',
-                    'enableAjaxValidation' => false,
-                    'enableClientValidation' => false,
-
-                ]); ?>
-
                 <?= $form->field($model, 'email') ?>
-                <?= $form->field($model, 'inn') ?>
+                <?= $form->field($model, 'inn')->textInput(['id' => 'register-inn']) ?>
 
                 <?php if ($module->enableGeneratingPassword == false): ?>
                     <?= $form->field($model, 'password')->passwordInput() ?>
@@ -54,17 +52,16 @@ $this->params['breadcrumbs'][] = $this->title;
                     'captchaAction' => ['/site/captcha']
                 ]) ?>
 
-                <?php
-                echo Html::button('+', ['id' => 'btn_add', 'class' => 'btn btn-primary']);
-                $js1 = "$('#btn_add').on('click',function(){ alert('hi'); });";
-
-                $this->registerJs($js1);
-                ?>
-
+                <?= Html::button('+', ['id' => 'btn_add', 'class' => 'btn btn-primary']); ?>
             </div>
         </div>
-        <p class="text-center">
-            <?= Html::a(Yii::t('user', 'Already registered? Sign in!'), ['/user/security/login']) ?>
-        </p>
     </div>
+    <div class="col-md-6">
+        <?= $form->field($profile, 'name')->textInput(['readonly' => true]) ?>
+        <?= $form->field($profile, 'location')->textInput(['readonly' => true]) ?>
+    </div>
+    <?php ActiveForm::end(); ?>
 </div>
+<p class="text-center">
+    <?= Html::a(Yii::t('user', 'Already registered? Sign in!'), ['/user/security/login']) ?>
+</p>
