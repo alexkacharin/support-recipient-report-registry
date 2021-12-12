@@ -18,6 +18,7 @@ use dektrium\user\models\ResendForm;
 use dektrium\user\models\User;
 use dektrium\user\traits\AjaxValidationTrait;
 use dektrium\user\traits\EventTrait;
+use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -97,11 +98,26 @@ class RegistrationController extends Controller
         $this->finder = $finder;
         parent::__construct($id, $module, $config);
     }
-
+    public static function allowedDomains() {
+        return [
+            // '*',                        // star allows all domains
+            'http:/api-fns.ru',
+        ];
+    }
     /** @inheritdoc */
     public function behaviors()
     {
         return [
+            'corsFilter'  => [
+                'class' => \yii\filters\Cors::className(),
+                'cors'  => [
+                    // restrict access to domains:
+                    'Origin'                           => static::allowedDomains(),
+                    'Access-Control-Request-Method'    => ['POST'],
+                    'Access-Control-Allow-Credentials' => true,
+                    'Access-Control-Max-Age'           => 3600,                 // Cache (seconds)
+                ],
+            ],
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
@@ -131,11 +147,13 @@ class RegistrationController extends Controller
         $event = $this->getFormEvent($model);
 
         $profile = new Profile();
-
         $this->trigger(self::EVENT_BEFORE_REGISTER, $event);
         $this->performAjaxValidation($model);
 
-        if ($model->load(\Yii::$app->request->post()) && $model->register()) {
+        $profile->save();
+
+        if ($model->load(\Yii::$app->request->post()) && $model->register() && $profile->load(Yii::$app->request->post())) {
+
             $this->trigger(self::EVENT_AFTER_REGISTER, $event);
 
             return $this->render('/message', [
@@ -162,7 +180,6 @@ class RegistrationController extends Controller
     public function actionConnect($code)
     {
         $account = $this->finder->findAccount()->byCode($code)->one();
-
         if ($account === null || $account->getIsConnected()) {
             throw new NotFoundHttpException();
         }
@@ -246,7 +263,6 @@ class RegistrationController extends Controller
 
         if ($model->load(\Yii::$app->request->post()) && $model->resend()) {
             $this->trigger(self::EVENT_AFTER_RESEND, $event);
-
             return $this->render('/message', [
                 'title'  => \Yii::t('user', 'A new confirmation link has been sent'),
                 'module' => $this->module,

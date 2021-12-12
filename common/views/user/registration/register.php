@@ -53,14 +53,22 @@ $this->params['breadcrumbs'][] = $this->title;
                 ]) ?>
 
                 <?= Html::button('+', ['id' => 'btn_add', 'class' => 'btn btn-primary']); ?>
+                <?= Html::submitButton('Регистрация', ['class' => 'btn btn-success']) ?>
             </div>
         </div>
     </div>
     <div class="col-md-6">
-        <?= $form->field($profile, 'name')->textInput(['readonly' => true]) ?>
-        <?= $form->field($profile, 'location')->textInput(['readonly' => true]) ?>
+
+        <?= $form->field($profile, 'name')->textInput() ?>
+        <?= $form->field($profile, 'location')->textInput() ?>
+        <p></p>
+    </div>
+
+    <div class="col-lg-12">
+
     </div>
     <?php ActiveForm::end(); ?>
+
 </div>
 <p class="text-center">
     <?= Html::a(Yii::t('user', 'Already registered? Sign in!'), ['/user/security/login']) ?>
