@@ -18,7 +18,6 @@ use yii\widgets\ActiveForm;
  * @var yii\web\View $this
  * @var RegistrationForm $model
  * @var dektrium\user\Module $module
- * @var dektrium\user\models\Profile $profile
  */
 
 $this->title = Yii::t('user', 'Sign up');
@@ -59,8 +58,8 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <div class="col-md-6">
 
-        <?= $form->field($profile, 'name')->textInput() ?>
-        <?= $form->field($profile, 'location')->textInput() ?>
+        <?= $form->field($model, 'companyName')->textInput() ?>
+        <?= $form->field($model, 'location')->textInput() ?>
         <p></p>
     </div>
 

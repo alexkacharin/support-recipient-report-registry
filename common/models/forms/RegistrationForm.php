@@ -11,13 +11,13 @@ class RegistrationForm extends \dektrium\user\models\RegistrationForm
      */
     public $captcha;
     public $inn;
-    public $name;
+    public $companyName;
     public $location;
     public function rules()
     {
         $rules = parent::rules();
         $rules[] = [['captcha', 'inn'], 'required'];
-        $rules[] = [['name', 'location'], 'required'];
+        $rules[] = [['companyName', 'location'], 'required'];
         $rules[] = ['captcha', 'captcha', 'captchaAction' => 'site/captcha', 'caseSensitive' => false];
 
         return $rules;
@@ -28,6 +28,8 @@ class RegistrationForm extends \dektrium\user\models\RegistrationForm
         $labels = parent::attributeLabels();
         $labels['captcha'] = 'Проверочный код';
         $labels['inn'] = 'ИНН';
+        $labels['companyName'] = 'Название компании';
+        $labels['location'] = 'Местоположение';
 
         return $labels;
     }

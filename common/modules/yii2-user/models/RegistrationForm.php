@@ -29,9 +29,14 @@ class RegistrationForm extends Model
     public $email;
 
     /**
+ * @var string Username
+ */
+    public $username;
+
+    /**
      * @var string Username
      */
-    public $username;
+    public $companyName;
 
     /**
      * @var integer Inn

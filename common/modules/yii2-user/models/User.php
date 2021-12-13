@@ -49,6 +49,9 @@ use yii\helpers\ArrayHelper;
  * @property integer $flags
  * @property integer $inn
  *
+ * @property string $location
+ * @property string $companyName
+ *
  * Defined relations:
  * @property-read Account[] $accounts
  * @property-read Profile   $profile
@@ -89,6 +92,16 @@ class User extends ActiveRecord implements IdentityInterface
      * @var Profile|null
      */
     private $_profile;
+
+    /**
+     * @var string Plain location. Used for profile.
+     */
+    public $location;
+
+    /**
+     * @var string Plain location. Used for profile.
+     */
+    public $companyName;
 
     /**
      * @return Finder
@@ -264,6 +277,9 @@ class User extends ActiveRecord implements IdentityInterface
             // inn rules
             'innRequired' => ['inn', 'required', 'on' => ['register', 'create']],
             'innLength'   => ['inn', 'integer'],
+
+            //location rules
+            'location' => [['location', 'companyName'], 'safe'],
         ];
     }
 
@@ -556,9 +572,12 @@ class User extends ActiveRecord implements IdentityInterface
     public function afterSave($insert, $changedAttributes)
     {
         parent::afterSave($insert, $changedAttributes);
+
         if ($insert) {
             if ($this->_profile == null) {
                 $this->_profile = Yii::createObject(Profile::class);
+                $this->_profile->location = $this->location;
+                $this->_profile->name = $this->companyName;
             }
             $this->_profile->link('user', $this);
         }

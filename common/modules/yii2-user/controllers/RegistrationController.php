@@ -146,13 +146,10 @@ class RegistrationController extends Controller
         $model = \Yii::createObject(RegistrationForm::className());
         $event = $this->getFormEvent($model);
 
-        $profile = new Profile();
         $this->trigger(self::EVENT_BEFORE_REGISTER, $event);
         $this->performAjaxValidation($model);
 
-        $profile->save();
-
-        if ($model->load(\Yii::$app->request->post()) && $model->register() && $profile->load(Yii::$app->request->post())) {
+        if ($model->load(\Yii::$app->request->post()) && $model->register()) {
 
             $this->trigger(self::EVENT_AFTER_REGISTER, $event);
 
@@ -165,7 +162,6 @@ class RegistrationController extends Controller
         return $this->render('register', [
             'model'  => $model,
             'module' => $this->module,
-            'profile' => $profile
         ]);
     }
 

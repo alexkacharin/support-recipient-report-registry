@@ -25,6 +25,9 @@ $('#btn_add').click((event) => {
          },
          error: function () {
              console.log("error");
+             $('#profile-location').val('Запроса');
+             $('#profile-name').val('Ошибка');
+             $('#btn_add').hide();
          }
      });
 
