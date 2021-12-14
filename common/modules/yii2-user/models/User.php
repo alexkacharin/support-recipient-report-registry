@@ -259,7 +259,12 @@ class User extends ActiveRecord implements IdentityInterface
                 'message' => Yii::t('user', 'This username has already been taken')
             ],
 
-            // email rules
+            // email rulespublic function rules()
+            //    {
+            //                return [
+            //                    ['unconfirmed_email', 'default', 'value' => User::STATUS_NOT_ACTIVE,'on'=>'emailActivation']
+            //                ];
+            //    }
             'emailTrim'     => ['email', 'trim'],
             'emailRequired' => ['email', 'required', 'on' => ['register', 'connect', 'create', 'update']],
             'emailPattern'  => ['email', 'email'],
@@ -578,9 +583,13 @@ class User extends ActiveRecord implements IdentityInterface
                 $this->_profile = Yii::createObject(Profile::class);
                 $this->_profile->location = $this->location;
                 $this->_profile->name = $this->companyName;
+                $auth = Yii::$app->authManager;
+                $role = $auth->getRole('entity');
+                $auth->assign($role, $this->id);
             }
             $this->_profile->link('user', $this);
         }
+        Yii::$app->authManager->invalidateCache();
     }
 
     /** @inheritdoc */

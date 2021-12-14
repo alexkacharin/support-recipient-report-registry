@@ -126,7 +126,14 @@ class RegistrationForm extends Model
         if (!$user->register()) {
             return false;
         }
-
+         function sendActivationEmail($user)
+    {
+        return Yii::$app->mailer->compose('activationEmail', ['user' => $user])
+            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name.' (отправлено роботом).'])
+            ->setTo($this->email)
+            ->setSubject('Активация для '.Yii::$app->name)
+            ->send();
+    }
         Yii::$app->session->setFlash(
             'info',
             Yii::t(

@@ -27,7 +27,7 @@ class m140209_132017_init extends Migration
             'confirmation_token'   => $this->string(32)->null(),
             'confirmation_sent_at' => $this->integer()->null(),
             'confirmed_at'         => $this->integer()->null(),
-            'unconfirmed_email'    => $this->string(255)->null(),
+            'unconfirmed_email'    => $this->string(255)->null()->defaultValue(0),
             'recovery_token'       => $this->string(32)->null(),
             'recovery_sent_at'     => $this->integer()->null(),
             'blocked_at'           => $this->integer()->null(),
@@ -42,7 +42,6 @@ class m140209_132017_init extends Migration
         $this->createIndex('{{%user_unique_email}}', '{{%user}}', 'email', true);
         $this->createIndex('{{%user_confirmation}}', '{{%user}}', 'id, confirmation_token', true);
         $this->createIndex('{{%user_recovery}}', '{{%user}}', 'id, recovery_token', true);
-
         $this->createTable('{{%profile}}', [
             'user_id'        => $this->integer()->notNull()->append('PRIMARY KEY'),
             'name'           => $this->string(255)->null(),
